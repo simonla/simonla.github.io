@@ -37,7 +37,7 @@ CoordinatorLayout+自定义behavior
 1234567891011121314151">
 <meta property="og:image" content="http://bihu-face.image.alimmdn.com/1.gif?t=1476078830464">
 <meta property="og:image" content="http://bihu-face.image.alimmdn.com/4.gif?t=1476082791389">
-<meta property="og:updated_time" content="2016-10-10T12:41:29.000Z">
+<meta property="og:updated_time" content="2016-10-10T12:48:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="列表滚动自动隐藏无关元素">
 <meta name="twitter:description" content="##列表滚动自动隐藏无关元素
@@ -158,16 +158,12 @@ CoordinatorLayout+自定义behavior
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">app:layout_scrollFlags="scroll|enterAlways"</div></pre></td></tr></table></figure>
 <p>把我们为Adapter添加的listener去掉再运行一下，发现toolbar也是可以正常隐藏的哦，这是为啥子喃=。=</p>
 <p>主要还是因为我们的CoordinatorLayout，文档里是这样说的</p>
-<blockquote>
-<p>CoordinatorLayout is intended for two primary use       cases:</p>
-<ul>
-<li>As a top-level application decor or chrome layout</li>
-<li>As a container for a specific interaction with one or more child views</li>
-</ul>
-<p>By specifying Behaviors for child views of a CoordinatorLayout you can provide many different interactions within a single parent and those views can also interact with one another. View classes can specify a default behavior when used as a child of a CoordinatorLayout using the DefaultBehavior annotation.</p>
-<p>Behaviors may be used to implement a variety of interactions and additional layout modifications ranging from sliding drawers and panels to swipe-dismissable elements and buttons that stick to other elements as they move and animate.</p>
-</blockquote>
-<p>简单来讲，CoordinatorLayout就是提供了一个桥梁给布局下的ChildView。具体的分析请看[Judy95]（<a href="http://www.jianshu.com/p/a506ee4afecb）的一篇博客，说来也怪，Google上一搜很容易就碰到他的文章，我也是学的过程中无意间看到的。" target="_blank" rel="external">http://www.jianshu.com/p/a506ee4afecb）的一篇博客，说来也怪，Google上一搜很容易就碰到他的文章，我也是学的过程中无意间看到的。</a></p>
+<p><em>CoordinatorLayout is intended for two primary use       cases:</em></p>
+<p><em>As a top-level application decor or chrome layout</em></p>
+<p><em>As a container for a specific interaction with one or more child views</em></p>
+<p><em>By specifying Behaviors for child views of a CoordinatorLayout you can provide many different interactions within a single parent and those views can also interact with one another. View classes can specify a default behavior when used as a child of a CoordinatorLayout using the DefaultBehavior annotation.</em></p>
+<p><em>Behaviors may be used to implement a variety of interactions and additional layout modifications ranging from sliding drawers and panels to swipe-dismissable elements and buttons that stick to other elements as they move and animate.</em></p>
+<p>简单来讲，CoordinatorLayout就是提供了一个桥梁给布局下的ChildView。具体的分析请看<a href="http://www.jianshu.com/p/a506ee4afecb" target="_blank" rel="external">Judy95</a>的一篇博客，说来也怪，Google上一搜很容易就碰到他的文章，我也是学的过程中无意间看到的。</p>
 <p>其实关键代码和之前的都差不多的，主要是onNestedScroll中我们的逻辑</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNestedScroll</span><span class="params">(CoordinatorLayout coordinatorLayout, FloatingActionButton child, View target, <span class="keyword">int</span> dxConsumed, <span class="keyword">int</span> dyConsumed, <span class="keyword">int</span> dxUnconsumed, <span class="keyword">int</span> dyUnconsumed)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> fabBottomMargin = child.getBottom() + child.getHeight();</div><div class="line">    <span class="keyword">int</span> scrollDistance = <span class="number">20</span>;</div><div class="line">    <span class="keyword">if</span> (mOffset &gt; scrollDistance &amp;&amp; mIsShow) &#123;</div><div class="line">        child.animate().translationY(fabBottomMargin)</div><div class="line">                .setInterpolator(<span class="keyword">new</span> AnticipateOvershootInterpolator(<span class="number">5</span>)).start();</div><div class="line">        mIsShow = <span class="keyword">false</span>;</div><div class="line">        mOffset = <span class="number">0</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mOffset &lt; -scrollDistance &amp;&amp; !mIsShow) &#123;</div><div class="line">        child.animate().translationY(<span class="number">0</span>)</div><div class="line">                .setInterpolator(<span class="keyword">new</span> AnticipateOvershootInterpolator(<span class="number">5</span>)).start();</div><div class="line">        mIsShow = <span class="keyword">true</span>;</div><div class="line">        mOffset = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> ((mIsShow &amp;&amp; dyConsumed &gt; <span class="number">0</span>) || (!mIsShow &amp;&amp; dyConsumed &lt; <span class="number">0</span>)) &#123;</div><div class="line">        mOffset += dyConsumed;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>好吧，太忙了，就先到这里好了= =。。。</p>
@@ -175,7 +171,7 @@ CoordinatorLayout+自定义behavior
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/10/列表滚动自动隐藏无关元素/" data-id="ciu41u1v80000vh9xztm02kr0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/10/10/列表滚动自动隐藏无关元素/" data-id="ciu420ys40001wl9xv4920w1m" class="article-share-link">Share</a>
       
       
     </footer>

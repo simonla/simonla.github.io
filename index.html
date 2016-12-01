@@ -52,9 +52,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -117,7 +117,7 @@
 <p>因为插入排序只会亦步亦趋的去交换相邻的元素，而希尔排序，会一次性将待排元素移动一大步</p>
 <p><strong>插入排序</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; mLen; i++) &#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &gt; <span class="number">0</span> &amp;&amp; less(mInts[j], mInts[j-<span class="number">1</span>]); j--)&#123;</div><div class="line">		swap(j, j-<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">``` </div><div class="line"></div><div class="line"></div><div class="line">**改进后的插入排序**</div><div class="line"></div><div class="line">```<span class="function">java</span></div><div class="line"><span class="title">for</span> <span class="params">(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; mLen; i++)</span> &#123;</div><div class="line">	<span class="keyword">if</span>(less(mInts[i-<span class="number">1</span>],mInts[i])) <span class="keyword">continue</span>;</div><div class="line">	<span class="keyword">int</span> target = mInts[i];</div><div class="line">	<span class="comment">//基类中的search和moveOneStep操作</span></div><div class="line">	<span class="keyword">int</span> result = search(<span class="number">0</span>, i-<span class="number">1</span>, target);</div><div class="line">	moveOneStep(result, i-<span class="number">1</span>);</div><div class="line">    mInts[result] = target;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="http://bihu-face.image.alimmdn.com/3.png?t=1480593037585" alt="图三，100000，改进后"><br><img src="http://bihu-face.image.alimmdn.com/4.png?t=1480593037583" alt="图四，100000，改进前"></p>
+<p><img src="http://bihu-face.image.alimmdn.com/3.png?t=1480593037585" alt="图三，100000，改进前"><br><img src="http://bihu-face.image.alimmdn.com/4.png?t=1480593037583" alt="图四，100000，改进后"></p>
 <p>改进后，我们在内循环中，将较大的元素都向后移动一位，而不是去交换他们，这样讲数组的访问次数就减半了，这和我们实际的测试数据也相当吻合</p>
 <p>可以看到，虽然只是常系数的改变，但是对我们来说这已经足够欣慰，必经我们的代码并没有增加太多，但是更令人欣慰的是希尔排序☺️</p>
 <p><strong>希尔排序</strong></p>
@@ -125,7 +125,7 @@
 <p>值得一提的是，希尔排序的具体运行速度，取决于我们选择的递减数列，也就是影响了我们上诉代码中的步长h，有兴趣的话，你可以换成不同的递减数列，来比较他们的性能</p>
 <p><strong>输入敏感</strong></p>
 <p>这俩货都是输入敏感的算法，换句话说，如果输入的数组本身就具有相当的局部有序性，他们都能够立即发现，速度大幅提高</p>
-<p>![基于10000次顺序数组] (<a href="http://bihu-face.image.alimmdn.com/5.png?t=1480593037573" target="_blank" rel="external">http://bihu-face.image.alimmdn.com/5.png?t=1480593037573</a>)</p>
+<p><img src="http://bihu-face.image.alimmdn.com/5.png?t=1480593037573" alt="基于10000次顺序数组"></p>
 <p>连快排也被斩落马下😂</p>
 <h2 id="归并排序和快速排序"><a href="#归并排序和快速排序" class="headerlink" title="归并排序和快速排序"></a>归并排序和快速排序</h2><p>这俩货都是把分治用到极致的算法，直接上代码</p>
 <p><strong>归并排序</strong></p>
@@ -144,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/12/01/排序算法/" data-id="ciw6cbns20000nm9xopqi0uwp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/12/01/排序算法/" data-id="ciw6cfyib0001q79x45tlhnmw" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -217,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/10/列表滚动自动隐藏无关元素/" data-id="ciw6cbns50001nm9xx4ckujum" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/10/10/列表滚动自动隐藏无关元素/" data-id="ciw6cfyi80000q79xoiw2rq4o" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -307,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/15/萌新指南/" data-id="ciw6cbns70002nm9xdlnrdoeg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/09/15/萌新指南/" data-id="ciw6cfyig0004q79xyqe3kg8u" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -346,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/12/第一篇博文/" data-id="ciw6cbnsb0004nm9xze6srlys" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/09/12/第一篇博文/" data-id="ciw6cfyif0003q79xf19fy3s0" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -363,7 +363,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Catégories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li></ul>
     </div>
@@ -388,7 +388,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -421,7 +421,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 Simonla<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

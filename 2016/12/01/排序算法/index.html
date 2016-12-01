@@ -5,12 +5,52 @@
   
   <title>Simonla&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="常见排序算法横测😂主要选手有
+
+冒泡排序
+选择排序
+插入排序
+希尔排序
+归并排序
+快速排序
+
+为了比较各种选手的实力，特别增加了他们的爸爸，也就是Sort基类，封装了一些常用的操作，方便我们进行比较
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Simonla's Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/12/01/排序算法/index.html">
 <meta property="og:site_name" content="Simonla's Blog">
+<meta property="og:description" content="常见排序算法横测😂主要选手有
+
+冒泡排序
+选择排序
+插入排序
+希尔排序
+归并排序
+快速排序
+
+为了比较各种选手的实力，特别增加了他们的爸爸，也就是Sort基类，封装了一些常用的操作，方便我们进行比较
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354">
+<meta property="og:image" content="http://bihu-face.image.alimmdn.com/1.png?t=1480593037583">
+<meta property="og:image" content="http://bihu-face.image.alimmdn.com/2.png?t=1480593037592">
+<meta property="og:image" content="http://bihu-face.image.alimmdn.com/3.png?t=1480593037585">
+<meta property="og:image" content="http://bihu-face.image.alimmdn.com/4.png?t=1480593037583">
+<meta property="og:image" content="http://bihu-face.image.alimmdn.com/6.png?t=1480594935209">
+<meta property="og:updated_time" content="2016-12-01T12:29:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Simonla's Blog">
+<meta name="twitter:description" content="常见排序算法横测😂主要选手有
+
+冒泡排序
+选择排序
+插入排序
+希尔排序
+归并排序
+快速排序
+
+为了比较各种选手的实力，特别增加了他们的爸爸，也就是Sort基类，封装了一些常用的操作，方便我们进行比较
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354">
+<meta name="twitter:image" content="http://bihu-face.image.alimmdn.com/1.png?t=1480593037583">
   
     <link rel="alternate" href="/atom.xml" title="Simonla&#39;s Blog" type="application/atom+xml">
   
@@ -63,9 +103,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-排序算法" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-排序算法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/01/排序算法/" class="article-date">
   <time datetime="2016-12-01T03:32:47.000Z" itemprop="datePublished">2016-12-01</time>
@@ -150,212 +188,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-列表滚动自动隐藏无关元素" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/10/列表滚动自动隐藏无关元素/" class="article-date">
-  <time datetime="2016-10-10T07:37:36.000Z" itemprop="datePublished">2016-10-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/10/列表滚动自动隐藏无关元素/">Toolbar等自动隐藏</a>
-    </h1>
+    <a href="/2016/10/10/列表滚动自动隐藏无关元素/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Toolbar等自动隐藏</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一直觉得知乎安卓客户端做的蛮好的，Toolbar+fab+BottomBar可以在滑动的时候自动隐藏和显示，让用户获得更大的视野来浏览正文</p>
-<p><img src="http://bihu-face.image.alimmdn.com/1.gif?t=1476078830464" alt="知乎客户端"></p>
-<p>大概想到了两种方式</p>
-<ul>
-<li><p>Framlayout+动画隐藏</p>
-</li>
-<li><p>CoordinatorLayout+自定义behavior</p>
-</li>
-</ul>
-<h2 id="Framlayout-动画隐藏"><a href="#Framlayout-动画隐藏" class="headerlink" title="Framlayout+动画隐藏"></a>Framlayout+动画隐藏</h2><p>先看一哈xml布局</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">FrameLayout</span></span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">android.support.design.widget.AppBarLayout</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>&gt;</div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">android.support.v7.widget.Toolbar</span></span></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/toolbar"</span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"attr/actionBarSize"</span>/&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">android.support.design.widget.AppBarLayout</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">android.support.design.widget.FloatingActionButton</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_gravity</span>=<span class="string">"bottom|end"</span></div><div class="line">        <span class="attr">android:layout_marginBottom</span>=<span class="string">"56dp"</span></div><div class="line">        <span class="attr">android:layout_marginEnd</span>=<span class="string">"16dp"</span>/&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">android.support.v7.widget.RecyclerView</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>/&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"50dp"</span></div><div class="line">        <span class="attr">android:layout_gravity</span>=<span class="string">"bottom"</span></div><div class="line">        <span class="attr">android:textColor</span>=<span class="string">"@color/white"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>嗯哼没什么特别的，一些无关紧要的代码都删掉了。列表是用的RecyclerView，当然你换成其他的布局也是行得通的</p>
-<p>然后就是重写一个RecyclerView的OnScrollListener</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">MyListener</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">OnScrollListener</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mIsShow = <span class="keyword">true</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mScrollOffset = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onScrolled(recyclerView, dx, dy)；</div><div class="line">        <span class="keyword">if</span> (mScrollOffset &gt; scrollDistance &amp;&amp; mIsShow) &#123;</div><div class="line">            onHide();</div><div class="line">            mIsShow = <span class="keyword">false</span>;</div><div class="line">            mScrollOffset = <span class="number">0</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mScrollOffset &lt; -scrollDistance &amp;&amp; !mIsShow) &#123;</div><div class="line">            onShow();</div><div class="line">            mIsShow = <span class="keyword">true</span>;</div><div class="line">            mScrollOffset = <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> ((mIsShow &amp;&amp; dy &gt; <span class="number">0</span>) || (!mIsShow &amp;&amp; dy &lt; <span class="number">0</span>)) &#123;</div><div class="line">            mScrollOffset += dy;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">onHide</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">onShow</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">addMore</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>就判断一下滑动的方向&amp;&amp;触发条件进行Hide或者Show操作就行了撒，然后看一哈Activity中具体的实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">mRvGirls.addOnScrollListener(<span class="keyword">new</span> MyListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onHide</span><span class="params">()</span> </span>&#123;</div><div class="line">        mAppBar.animate().alpha(<span class="number">0</span>).translationY(-mToolbar.getBottom())</div><div class="line">            .setInterpolator(<span class="keyword">new</span> AccelerateInterpolator(<span class="number">2</span>));</div><div class="line">        mTvBottom.animate().alpha(<span class="number">0</span>).translationY(mTvBottom.getHeight())</div><div class="line">             .setInterpolator(<span class="keyword">new</span> AccelerateInterpolator(<span class="number">2</span>));</div><div class="line">        FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mFab.getLayoutParams();</div><div class="line">        <span class="keyword">int</span> fabBottomMargin = lp.bottomMargin;</div><div class="line">        mFab.animate().translationY(mFab.getHeight() + fabBottomMargin)</div><div class="line">                        .setInterpolator(<span class="keyword">new</span> AnticipateOvershootInterpolator(<span class="number">5</span>)).start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">     <span class="meta">@Override</span></div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onShow</span><span class="params">()</span> </span>&#123;</div><div class="line">        mAppBar.animate().translationY(<span class="number">0</span>).alpha(<span class="number">225</span>).setInterpolator(<span class="keyword">new</span> AccelerateInterpolator(<span class="number">2</span>));</div><div class="line">        mFab.animate().translationY(<span class="number">0</span>).setInterpolator(<span class="keyword">new</span> AnticipateOvershootInterpolator(<span class="number">5</span>));</div><div class="line">        mTvBottom.animate().translationY(<span class="number">0</span>).alpha(<span class="number">225</span>).setInterpolator(<span class="keyword">new</span> AccelerateInterpolator(<span class="number">2</span>)).start();</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>大概就是这个样子，note:不能直接对Toolbar使用动画，因为background是appbarlayout在控制，不然会出问题。还有最好要给RecyclerView添加一个Header，不然顶部会露一节出来。</p>
-<p><img src="http://bihu-face.image.alimmdn.com/4.gif?t=1476082791389" alt="Gank"></p>
-<h2 id="CoordinatorLayout-自定义behavior"><a href="#CoordinatorLayout-自定义behavior" class="headerlink" title="CoordinatorLayout+自定义behavior"></a>CoordinatorLayout+自定义behavior</h2><p>上面这种方法有个缺点，就是RecyclerView的ViewManger或者连RecyclerView都换掉了的话，那么隐藏的这部分逻辑也要换。用装逼的话来说。。。就是有耦合。。。</p>
-<p>Coordinator是5.0后新出的噢，看起来就好屌噢，名字都不晓得什么意思，查了一下好像是协调布局的意思，以后就这么叫他了=。=</p>
-<p>我们先试一下，把根布局换成CoordinatorLayout，再给Toolbar在xml里面加上这段代码</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">app:layout_scrollFlags="scroll|enterAlways"</div></pre></td></tr></table></figure>
-<p>把我们为Adapter添加的listener去掉再运行一下，发现toolbar也是可以正常隐藏的哦，这是为啥子喃=。=</p>
-<p>主要还是因为我们的CoordinatorLayout，文档里是这样说的</p>
-<p><em>CoordinatorLayout is intended for two primary use       cases:</em></p>
-<p><em>As a top-level application decor or chrome layout</em></p>
-<p><em>As a container for a specific interaction with one or more child views</em></p>
-<p><em>By specifying Behaviors for child views of a CoordinatorLayout you can provide many different interactions within a single parent and those views can also interact with one another. View classes can specify a default behavior when used as a child of a CoordinatorLayout using the DefaultBehavior annotation.</em></p>
-<p><em>Behaviors may be used to implement a variety of interactions and additional layout modifications ranging from sliding drawers and panels to swipe-dismissable elements and buttons that stick to other elements as they move and animate.</em></p>
-<p>简单来讲，CoordinatorLayout就是提供了一个桥梁给布局下的ChildView。具体的分析请看<a href="http://www.jianshu.com/p/a506ee4afecb" target="_blank" rel="external">Judy95</a>的一篇博客，说来也怪，Google上一搜很容易就碰到他的文章，我也是查资料的时候无意间看到的。</p>
-<p>onNestedScroll中我们的逻辑和之前的都差不多</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNestedScroll</span><span class="params">(CoordinatorLayout coordinatorLayout, FloatingActionButton child, View target, <span class="keyword">int</span> dxConsumed, <span class="keyword">int</span> dyConsumed, <span class="keyword">int</span> dxUnconsumed, <span class="keyword">int</span> dyUnconsumed)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> fabBottomMargin = child.getBottom() + child.getHeight();</div><div class="line">    <span class="keyword">int</span> scrollDistance = <span class="number">20</span>;</div><div class="line">    <span class="keyword">if</span> (mOffset &gt; scrollDistance &amp;&amp; mIsShow) &#123;</div><div class="line">        child.animate().translationY(fabBottomMargin)</div><div class="line">                .setInterpolator(<span class="keyword">new</span> AnticipateOvershootInterpolator(<span class="number">5</span>)).start();</div><div class="line">        mIsShow = <span class="keyword">false</span>;</div><div class="line">        mOffset = <span class="number">0</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mOffset &lt; -scrollDistance &amp;&amp; !mIsShow) &#123;</div><div class="line">        child.animate().translationY(<span class="number">0</span>)</div><div class="line">                .setInterpolator(<span class="keyword">new</span> AnticipateOvershootInterpolator(<span class="number">5</span>)).start();</div><div class="line">        mIsShow = <span class="keyword">true</span>;</div><div class="line">        mOffset = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> ((mIsShow &amp;&amp; dyConsumed &gt; <span class="number">0</span>) || (!mIsShow &amp;&amp; dyConsumed &lt; <span class="number">0</span>)) &#123;</div><div class="line">        mOffset += dyConsumed;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>就先到这里好了= =。。。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/10/列表滚动自动隐藏无关元素/" data-id="ciw6cbns50001nm9xx4ckujum" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-萌新指南" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/15/萌新指南/" class="article-date">
-  <time datetime="2016-09-14T17:02:00.000Z" itemprop="datePublished">2016-09-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/15/萌新指南/">Android 萌新指南</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h3><p>这篇文章是面向完全零基础的萌新写的，如果你是大佬，就不需要再看下去了。</p>
-<p>最近总有人问我，学习编程是不是很难，程序猿是不是很累。</p>
-<p>其实这些问题都很正常，我也很愿意和即将进入大学有意学习编程的同学谈谈关于编程的事情，因为你们需要一些指引，来进入这个新的阶段。</p>
-<p>编程真的是一件很有意思的事情，学会变成就像变成了造物主，可以在代码中，尽情发挥你的创造力，创造任何你想创造的东西。在过去的20年里，对我而言，没有什么东西，比编程更能吸引我的智力活动了。</p>
-<p>进入大学后，你们可能会接触到一些编程方面的训练（包括但不限于计算机，软件专业）。这本来是一件挺好的事情，让尽可能多的人接触到编程，因为它的用途真的很广。但是往往事与愿违，很多同学，就是在这里，失去了学习最主要的动力—-兴趣。<strong>在有些同学的眼里，谓之编程就是用一些复杂深晦的语言，用很长的学习周期，去解决一些简单的数学问题，然后，就言之没兴趣，不合适，无天赋</strong>。</p>
-<p>然而这并不是编程的全部，编程应该是很有趣的，<strong>所谓的无趣阶段，是因为你还没有能力，用这些知识，来发挥创造。</strong>程序作为一种工具，你可以用它来解数学问题，也能它来做一些更实际的应用。当你玩累了，再回头去，才会发现数学题逻辑题、数据结构算法也是很有趣的东西。这些数学题，也能解决得很优雅。不知道你们是否还记得，面试有一道题：<a href="https://www.zhihu.com/question/23999095/answer/55061840?from=profile_answer_card" target="_blank" rel="external">一个逻辑学的教授，有三个很聪明的学生…</a>。对吧，当你入了门，也能做到这么酷的事情。</p>
-<p>哦对了，大一学校教授的语言是C / C++，是不是听起来很感觉很无用。并不是，是因为你还没有到达使用它们的高度。说出来你可能不信，Linux 和 Git 都是这些用这些语言完成的，你可能连Git是什么都不知道，那怎么能指望用C / C++ 来创造一些东西呢。<strong>你感觉的无用，是你还没有足够的知识积累</strong> 。</p>
-<p>So How？对于这种现状，我的建议是：上课认真听，耐着点性子，学会最基本东西。然后，再学习一门严谨的强类型的语言，如 Java，和一门轻松有趣的脚本语言，如JS，Python。当然了，想要一些立竿见影的东西？HTML, CSS或许是个是个不错的选择。</p>
-<h3 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h3><p>不想再写那么多字了，罗列一些有用的建议：</p>
-<ul>
-<li>不管学习什么，首先你应该读一读<a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md" target="_blank" rel="external">提问的智慧</a></li>
-<li>不要指望一蹴而就，这件事没那么容易</li>
-<li>科学上网是必要条件，一顿饭的钱不要吝啬</li>
-<li>当然获取信息的能力也是</li>
-<li>所以搜索引擎是你最好的老师</li>
-<li>能Google就不要百度</li>
-<li>不要问我怎么科学上网，我也不知道</li>
-<li>不要害怕英文，中文很美，但有些事情中文真的办不到 </li>
-<li>学校教的东西重要，但你需要和前沿技术保持一致</li>
-<li>不要指望按部就班</li>
-<li>学校的好坏重要，认清这一点</li>
-<li>但是你今后人生的艰难，恰恰不是因为你没能考上一个满意的学校，而是在这所学校里，在一个能让自己自由充分成长的黄金四年里，把自己给荒废了</li>
-<li>养成分享的好习惯</li>
-</ul>
-<h3 id="Guide"><a href="#Guide" class="headerlink" title="Guide"></a>Guide</h3><h4 id="Java-部分"><a href="#Java-部分" class="headerlink" title="Java 部分"></a>Java 部分</h4><ul>
-<li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">学习Git/GitHub</a></li>
-<li><a href="https://www.sublimetext.com/" target="_blank" rel="external">下载文本编辑器 Sublime Text</a></li>
-<li><a href="https://www.jetbrains.com/idea/download/#section=windows" target="_blank" rel="external">下载Java的IDE</a><br>不再推荐使用Eclipse</li>
-<li>有一定基础的同学（对OOP有概念的，或者动手写过的），直接看《Thinking in Java》。从来没有写过程序的，看Java4Android这个视频，网易云课堂有，0-30集就好。当你觉得看视频的速度怎么这么慢，就可以去买本Java的书咯，什么都行，不是李刚的就行。</li>
-</ul>
-<h4 id="Android-部分"><a href="#Android-部分" class="headerlink" title="Android 部分"></a>Android 部分</h4><ul>
-<li>下载IDE<a href="https://developer.android.com/studio/index.html" target="_blank" rel="external"> Android Studio</a>，不要问我为什么这个网站打不开</li>
-<li>有问题试着用<a href="http://stackoverflow.com/" target="_blank" rel="external"> StackOverflow</a></li>
-<li>推荐看《Android编程权威指南》，《第一行代码》也不错，就是老旧了些</li>
-</ul>
-<h4 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h4><h5 id="Note-粗体书籍的知识为必修知识、基础知识，但是你不一定要买这本书，你可以买任何包含了这些知识的其他书籍。剩下的，有私货，有娱乐消遣的，有进阶的，但是都是值得一看的"><a href="#Note-粗体书籍的知识为必修知识、基础知识，但是你不一定要买这本书，你可以买任何包含了这些知识的其他书籍。剩下的，有私货，有娱乐消遣的，有进阶的，但是都是值得一看的" class="headerlink" title="Note: 粗体书籍的知识为必修知识、基础知识，但是你不一定要买这本书，你可以买任何包含了这些知识的其他书籍。剩下的，有私货，有娱乐消遣的，有进阶的，但是都是值得一看的"></a>Note: 粗体书籍的知识为必修知识、基础知识，但是你不一定要买这本书，你可以买任何包含了这些知识的其他书籍。剩下的，有私货，有娱乐消遣的，有进阶的，但是都是值得一看的</h5><ul>
-<li><strong>《Java开发实战经典》（李兴华 / 清华大学出版社）—-从来没有接触过编程的同学，Java从入门到不放弃</strong></li>
-<li>《Thinking in java》( Bruce Eckel / 机械工业出版社)—OOP是什么？以及极好的训练耐心的书（贬义）</li>
-<li>《算法》（Robert Sedgewick &amp; Kevin Wayne / 人民邮电出版社）—无聊的时候看看</li>
-<li>《黑客与画家》（Paul Graham / 人民邮电出版社）—-What I talk about when I talk about geek and how to be a nerd.</li>
-<li>《世界因你而不同》（李开复 / 中信出版社）—-鸡汤向，初中看的，李开复人品不评价，做的事确实还是挺厉害</li>
-<li><strong>《Android编程权威指南第二版》（Bill Phillips / 人民邮电出版社）</strong>—-挺新的，翻译有些问题，不过白璧微瑕无伤大雅</li>
-<li><strong>《第一行代码》（郭霖 / 人民邮电出版社）</strong>—-与上面那本可以相互替换，不过，没有必要两本同时买</li>
-<li><strong>《Android开发艺术探索》（任玉刚 / 中国工信出版集团）—-进阶必备</strong></li>
-<li>《Andoid群英传》（徐宜生 / 中国工信出版集团）—-进阶书，个人觉得性价比不高</li>
-</ul>
-<h4 id="学习路线"><a href="#学习路线" class="headerlink" title="学习路线"></a>学习路线</h4><p><img src="http://ac-8nxkymqc.clouddn.com/becb7c139063eb4e.png" alt="Anrdoi学习之道"></p>
-<h4 id="电脑配置"><a href="#电脑配置" class="headerlink" title="电脑配置"></a>电脑配置</h4><p>最好有Mac咯<br>攒钱买 MacBook Pro，Air感觉有点小卡，不过还行<br>内存 8G+<br>CPU i5+<br>SSD 最好要有。。。不然会很惨的。。。<br>显示屏可以考虑，笔记本用久了眼睛真的很酸<br>有钱买个机械键盘，这样代码出错就没有理由怪键盘了<br><img src="http://ac-8nxkymqc.clouddn.com/f3ef07678dd2091c.png" alt="当然台式也不错"></p>
-<p>好了就这些了，祝你们玩得愉快，感谢观看</p>
-<p>愿你永远保持对技术的热爱和敬畏</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/15/萌新指南/" data-id="ciw6cbns70002nm9xdlnrdoeg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-第一篇博文" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/12/第一篇博文/" class="article-date">
-  <time datetime="2016-09-12T15:29:00.000Z" itemprop="datePublished">2016-09-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/12/第一篇博文/">第一篇博文</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Hi,<br>我叫曾名杨<br>是重庆邮电大学软件学院的大二学生<br>也是红岩网校移动开发部的一员</p>
-<p>以后将会在这里分享一些文章</p>
-<p>Thx~</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/12/第一篇博文/" data-id="ciw6cbnsb0004nm9xze6srlys" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         

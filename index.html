@@ -65,6 +65,183 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-View总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/30/View总结/" class="article-date">
+  <time datetime="2016-12-30T10:13:00.000Z" itemprop="datePublished">2016-12-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/30/View总结/">View滑动相关总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#View滑动相关总结</p>
+<p>##坐标</p>
+<p>###View中的坐标</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">name</th>
+<th style="text-align:left">explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">getLeft()</td>
+<td style="text-align:left">返回View自身左边到父布局左边的距离</td>
+</tr>
+<tr>
+<td style="text-align:left">getTop()</td>
+<td style="text-align:left">返回View自身顶边到父布局顶边的距离</td>
+</tr>
+<tr>
+<td style="text-align:left">getRight()</td>
+<td style="text-align:left">返回View自身右边到父布局左边的距离</td>
+</tr>
+<tr>
+<td style="text-align:left">getBottom()</td>
+<td style="text-align:left">返回View自身到父布局 顶边的距离</td>
+</tr>
+<tr>
+<td style="text-align:left">getX()</td>
+<td style="text-align:left">返回值为getLeft()+getTranslationX()，当setTranslationX()时getLeft()不变，getX()变</td>
+</tr>
+<tr>
+<td style="text-align:left">getY()</td>
+<td style="text-align:left">返回值为getTop()+getTranslationY()，当setTranslationY()时getTop()不变，getY()变</td>
+</tr>
+</tbody>
+</table>
+<p>###触摸事件MotionEvent中的坐标</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">name</th>
+<th style="text-align:left">explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">getX()</td>
+<td style="text-align:left">当前View中，距离左边的距离</td>
+</tr>
+<tr>
+<td style="text-align:left">getY()</td>
+<td style="text-align:left">当前View中，距离顶边的距离</td>
+</tr>
+<tr>
+<td style="text-align:left">getRawX()</td>
+<td style="text-align:left">整个屏幕中，距离左边的距离</td>
+</tr>
+<tr>
+<td style="text-align:left">getRawY()</td>
+<td style="text-align:left">整个屏幕中，距离顶边的距离</td>
+</tr>
+</tbody>
+</table>
+<p>###滑动相关的坐标</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">name</th>
+<th style="text-align:left">explain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">offsetLeftAndRight(int offset)</td>
+<td style="text-align:left">水平方向挪动View，offset为正则x轴正向移动，移动的是整个View，getLeft()会变</td>
+</tr>
+<tr>
+<td style="text-align:left">goffsetTopAndBottom(int offset)</td>
+<td style="text-align:left">垂直方向挪动View，offset为正则y轴正向移动，移动的是整个View，getTop()会变</td>
+</tr>
+<tr>
+<td style="text-align:left">scrollTo(int x, int y)</td>
+<td style="text-align:left">将View中内容滑动到相应的位置，参考坐标原点为ParentView左上角，x,y为正则向x,y轴反方向移动，反之同理。</td>
+</tr>
+<tr>
+<td style="text-align:left">scrollBy（int x, int y）</td>
+<td style="text-align:left">调用scrollTo(scrollX+x,scrollY+y),也就是基于当前位置的相对滑动</td>
+</tr>
+<tr>
+<td style="text-align:left">getScrollX()/getScrollY()</td>
+<td style="text-align:left">View左边缘到View内容左边缘的距离 /View上边缘到View内容上边缘的距离</td>
+</tr>
+</tbody>
+</table>
+<p>##滑动（改变View的位置）</p>
+<p>###方法一：layout<br>调用View的layout方法，对View自身进行重新布局，来达到改变View位置的效果</p>
+<p>layout(int l, int t, int r, int b), 四个参数是left, top, right, bottom </p>
+<p>很简单，没什么好说的</p>
+<p>###方法二：LayoutParams<br>LayoutParams是子视图向父视图传达自己想要变成什么样子的一个东西</p>
+<p>它是作为一个静态内部类放在不同的ViewGroup里面的</p>
+<p>所以不同的ViewGroup有不同的LayoutParams，在这里我们不再展开</p>
+<p>我们只需要知道，padding, margin,gravity等等都是它在控制，我们当然可以拿来移动View</p>
+<p>因为LayoutParams的继承结构，我们可以用如下代码来来达到我们的目的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) 	getLayoutParams();</div><div class="line">lp.leftMargin = xxx;</div><div class="line">lp.topMargin = xxx;</div><div class="line">setLayoutParams(lp);</div></pre></td></tr></table></figure>
+<p>###方法三：scrollTo与scrollBy<br>都是View的方法</p>
+<p>对View来说是移动的View的content，对ViewGroup来说是移动的childView，后文不再加以区分，统一称为移动的View的内容</p>
+<p>scrollTo(x, y)是移动到指定的地方</p>
+<p>scrollBy(x, y)是移动的增量</p>
+<p>scrollBy实际上也是调用的scrollTo</p>
+<p>通过源码可以发现，参数(x, y)，实际上是改变了View的mScrollX和mScrollY，在这里解释一下这两个值</p>
+<p>mScrollX: View左边缘到View内容左边缘的距离</p>
+<p>mScrollY: View上边缘到View内容上边缘的距离</p>
+<p>###方法四：Scroller</p>
+<p>其实我觉得像是一个工具类，它能为我们把一次滑动，分成很多次小滑动，方便我们实现弹性滑动</p>
+<p>为什么说Scroller更像是一个工具类，因为Scroller并不会对View进行任何操作，它只会保存，然后计算出一组数值</p>
+<p>这个类代码也不多，有兴趣可以读一下</p>
+<p>####初始化<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mScroller = <span class="keyword">new</span> Scroller(context);</div></pre></td></tr></table></figure></p>
+<p>或者设置一个插值器</p>
+<p>默认设置了一个ViscousFluidInterpolator()的插值器</p>
+<p>####启动<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mScroller.startScroll(<span class="keyword">int</span> startX, <span class="keyword">int</span> startY, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy, <span class="keyword">int</span> duration)</div></pre></td></tr></table></figure></p>
+<p>或者设置一下时长，默认为250ms</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mScroller.startScroll(<span class="keyword">int</span> startX, <span class="keyword">int</span> startY, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</div></pre></td></tr></table></figure>
+<p>前两个参数是起始坐标，后两个是偏移量</p>
+<p>####流程</p>
+<p>我们调用了startScroll以后，再调用一次View的invalidate()方法，对View进行重绘制</p>
+<p>这时View的Draw()方法会调用 computeScroll()方法，可以看见，在View中该方法没有任何实现，我们复写它</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">computeScroll</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.computeScroll();</div><div class="line">    <span class="keyword">if</span> (mScroller.computeScrollOffset()) &#123;</div><div class="line">      	<span class="comment">//你要进行的操作</span></div><div class="line">        invalidate();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>mScroller.computeScrollOffset()将会通知你是否已经完成了上一次滑动，否则在方法中的 invalidate()将会反复被调用，陷入无限循环</p>
+<p>如果该方法返回true，成功进入条件语句</p>
+<p>Scroller为我们提供了mScroller.getCurrX(), mScroller.getCurrY()</p>
+<p>我们把Scroller提供的值传给scrollBy() / scrollTo()，来实现我们想要的滑动</p>
+<p>最后，再调用一次invalidate()，来循环上述操作</p>
+<p>####方法五：动画</p>
+<p>主要是通过属性动画，举个栗子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ObjectAnimator.ofFloat(<span class="keyword">this</span>, <span class="string">"translationX"</span>, viewGroup.getScrollX()).setDuration(<span class="number">200</span>).start();</div><div class="line">                ObjectAnimator.ofFloat(<span class="keyword">this</span>,<span class="string">"translationY"</span>,viewGroup.getScrollY()).setDuration(<span class="number">200</span>).start();</div></pre></td></tr></table></figure>
+<p>属性动画的具体实现感觉探索起来还是很有趣的，以后有机会再写一篇，这里就暂且不说啦</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/12/30/View总结/" data-id="cixbn7nnf00007s9x1t1w16d9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-排序算法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/03/排序算法/" class="article-date">
@@ -228,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/12/03/排序算法/" data-id="ciwa6ya7e0001mc9xqkmoomz8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/12/03/排序算法/" data-id="cixbn7nnq00037s9xgz4kyyjx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -301,7 +478,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/10/列表滚动自动隐藏无关元素/" data-id="ciwa6ya7a0000mc9xe59ute4g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/10/10/列表滚动自动隐藏无关元素/" data-id="cixbn7nnr00047s9x25vdecr8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -391,7 +568,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/15/萌新指南/" data-id="ciwa6ya7j0004mc9xbh7rmhhf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/09/15/萌新指南/" data-id="cixbn7nns00057s9x2l4hmpid" class="article-share-link">Share</a>
       
       
     </footer>
@@ -430,7 +607,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/12/第一篇博文/" data-id="ciwa6ya7i0003mc9xanx7a087" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/09/12/第一篇博文/" data-id="cixbn7nnk00017s9xb8mt5n6z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -475,6 +652,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/12/30/View总结/">View滑动相关总结</a>
+          </li>
         
           <li>
             <a href="/2016/12/03/排序算法/">常见排序算法</a>
